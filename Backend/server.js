@@ -6,7 +6,9 @@ const app = express();
 
 app.use(express.json());
 app.use(cors())
-const port = 5400
+
+const PORT = process.env.PORT || 5400;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 mongoose.connect(process.env.Mongo_URI)
     .then(() => console.log("Mongodb is connected"))
@@ -15,4 +17,3 @@ mongoose.connect(process.env.Mongo_URI)
 const ProductRoute = require("./Routes/ProductRoute")
 app.use("/api/products", ProductRoute);
 app.use("/uploads", express.static("uploads"));
-app.listen(port, () => console.log(`🚀 Your Server is running in Port no ${port}`))
