@@ -4,21 +4,23 @@ const ProductModel = require("../Model/ProductModel");
 module.exports.saveProduct = async (req, res) => {
     try {
         let body = req.body
+        const image = req.file ? req.file.filename : null;
         if (
             !body.productName
             || !body.productprice
             || !body.CurrencyCode
             || !body.numberOfSale
             || !body.productRaitng
-            || !body.Dropshipping
+            || !body.Dropshipping === undefined 
             || !body.shopName
         ) {
             res.status(400).send({
                 message: `required Field is missing, all fields are required:
+                Image
                 productName
                 productprice
                 CurrencyCode
-                numberofSale
+                numberOfSale
                 productRaitng
                 Dropshipping
                 shopName`
@@ -26,16 +28,17 @@ module.exports.saveProduct = async (req, res) => {
             return;
         }
         let results = await ProductModel.create({
+            Image: image,
             productName: body.productName,
             productprice: body.productprice,
             CurrencyCode: body.CurrencyCode,
             numberOfSale: body.numberOfSale,
             productRaitng: body.productRaitng,
             Dropshipping: body.Dropshipping,
-            shopName: body.shopName
+            shopName: body.shopName,
         })
         console.log("result", results);
-        res.status(201).send({ message: "product is added in database" })
+        res.status(201).send({ message: "product is added in database", })
 
     } catch (error) {
         console.log("error in db", error)
@@ -60,6 +63,20 @@ module.exports.getProducts = async (req, res) => {
         });
     }
 };
+
+module.exports.getProductById = async (req, res) => {
+
+    try {
+
+        let result = await ProductModel.findOne({ _id: req.params.id }).exec();
+        res.status(200).send({ message: "Product fetched successfully", data: result });
+    }
+    catch (err) {
+        console.error("Error in fetching product by ID:", err);
+        res.status(500).send({ message: "Database error fetching product by ID" });
+    }
+};
+
 module.exports.deleteProduct = async (req, res) => {
     let _id = req.params.id;
     try {
@@ -77,18 +94,22 @@ module.exports.deleteProduct = async (req, res) => {
     }
 }
 
-module.exports.updateProduct = async(req,res) =>{
+module.exports.updateProduct = async (req, res) => {
     let _id = req.params.id
+    
     let body = req.body
-    try{
-        const product = await ProductModel.findByIdAndUpdate(_id,body);
+     if (req.file) {
+        req.body.Image = req.file.filename;
+    }
+    try {
+        const product = await ProductModel.findByIdAndUpdate(_id, body,{new : true});
         if (!product) {
             return res.status(404).send({ message: "Product not found" });
         }
         res.status(200).send({ message: "Product updated Successfully" });
         return;
     }
-    catch(err){
+    catch (err) {
         console.log("Error in updating product:", err);
         res.status(500).send({ message: "Database error updating product" });
     }

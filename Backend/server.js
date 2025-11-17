@@ -14,5 +14,5 @@ mongoose.connect(process.env.Mongo_URI)
 
 const ProductRoute = require("./Routes/ProductRoute")
 app.use("/api/products", ProductRoute);
-
+app.use("/uploads", express.static("uploads"));
 app.listen(port, () => console.log(`🚀 Your Server is running in Port no ${port}`))

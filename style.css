@@ -1,0 +1,184 @@
+/* ------------------------------------
+   Global Layout
+------------------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f4f5f7;
+  font-family: "Poppins", sans-serif;
+  color: #2c2c2c;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 32px;
+  color: #1b1b1b;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+a {
+  text-decoration: none;
+  padding: 10px 18px;
+  margin-right: 10px;
+  background: #ffffff;
+  color: #333;
+  border-radius: 8px;
+  font-size: 15px;
+  border: 1px solid #dcdcdc;
+  transition: 0.3s ease;
+}
+
+a:hover {
+  background: #0072ff;
+  color: #fff;
+}
+
+/* ------------------------------------
+   Product List Grid
+------------------------------------ */
+#productsListDiv {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+/* ------------------------------------
+   Product Card
+------------------------------------ */
+#productsListDiv > div {
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: 0.3s ease;
+  border: 1px solid #ececec;
+}
+
+#productsListDiv > div:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+#productsListDiv img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+/* Product Title */
+#productsListDiv p:first-of-type {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #111;
+}
+
+/* Price */
+#productsListDiv > div span:nth-child(2) {
+  font-size: 28px !important;
+  font-weight: 700;
+  color: #0072ff;
+}
+
+/* Secondary text */
+#productsListDiv p {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* ------------------------------------
+   Buttons
+------------------------------------ */
+button {
+  padding: 8px 12px;
+  width: 100%;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 8px;
+  transition: 0.3s ease;
+  font-weight: 500;
+}
+
+.delete {
+  background: #ff3b3b;
+  color: #fff;
+}
+
+.delete:hover {
+  background: #e13333;
+}
+
+.edit {
+  background: #0072ff;
+  color: white;
+}
+
+.edit:hover {
+  background: #005ad1;
+}
+
+/* ------------------------------------
+   Update Product Form Popup
+------------------------------------ */
+#updateForm {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* backdrop-filter: blur(5px); */
+}
+
+.updateForm {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background: #ffffff;
+  padding: 35px 40px;
+  transform: translate(-50%, -50%);
+  width: 420px;
+  border-radius: 16px;
+  box-shadow: 0 5px 40px rgba(0,0,0,0.22);
+  z-index: 9999;
+}
+
+.updateForm label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.updateForm input,
+.updateForm select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.updateForm input[type="submit"] {
+  background: #00cc6a;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+}
+
+.updateForm input[type="submit"]:hover {
+  background: #00b45c;
+}

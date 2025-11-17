@@ -15,183 +15,344 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        Helvetica, Arial, sans-serif;
-      background-color: #f4f7f6;
-      color: #333;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #2c3e50;
       line-height: 1.6;
       padding: 20px;
+      min-height: 100vh;
     }
+
     .container {
-      max-width: 600px;
-      margin: 20px auto;
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      max-width: 700px;
+      margin: 30px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      animation: slideUp 0.5s ease-out;
     }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     h1 {
       text-align: center;
       color: #2c3e50;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #7f8c8d;
+      margin-bottom: 30px;
+      font-size: 14px;
     }
 
     nav {
       text-align: center;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
     }
 
     nav a {
       text-decoration: none;
-      color: #3498db;
-      font-weight: 500;
-      padding: 5px 10px;
-      margin: 0 5px;
-      border-radius: 4px;
-      transition: background-color 0.3s;
+      color: white;
+      font-weight: 600;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      font-size: 14px;
     }
 
     nav a:hover {
-      background-color: #ecf0f1;
-      text-decoration: underline;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
     }
+
     form {
       display: flex;
       flex-direction: column;
     }
 
+    .form-group {
+      margin-bottom: 20px;
+    }
+
     label {
       display: block;
       font-weight: 600;
-      margin-top: 20px;
       margin-bottom: 8px;
+      color: #2c3e50;
+      font-size: 14px;
+      letter-spacing: 0.5px;
     }
 
     input[type="text"],
     input[type="number"],
+    input[type="file"],
     select {
       width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
-      transition: border-color 0.3s, box-shadow 0.3s;
+      padding: 12px 14px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      transition: all 0.3s ease;
+      background-color: #f8f9fa;
     }
+
     input[type="text"]:focus,
     input[type="number"]:focus,
+    input[type="file"]:focus,
     select:focus {
       outline: none;
-      border-color: #3498db;
-      box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+      border-color: #667eea;
+      background-color: white;
+      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
     }
+
+    input[type="file"] {
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    input[type="file"]::file-selector-button {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+      margin-right: 10px;
+      transition: transform 0.3s;
+    }
+
+    input[type="file"]::file-selector-button:hover {
+      transform: scale(1.05);
+    }
+
     button[type="submit"] {
       width: 100%;
-      padding: 15px;
-      background-color: #2ecc71;
+      padding: 14px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
-      font-size: 1.1rem;
-      font-weight: bold;
+      font-size: 16px;
+      font-weight: 700;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
       margin-top: 30px;
-      transition: background-color 0.3s;
+      transition: all 0.3s ease;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
     }
 
     button[type="submit"]:hover {
-      background-color: #27ae60;
-    }
-    #message {
-      text-align: center;
-      margin-top: 20px;
-      padding: 15px;
-      border-radius: 5px;
-      font-weight: 500;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
     }
 
-    #message{
-      display: block;
-      background-color: #e8f5e9;
-      color: #2e7d32;
+    button[type="submit"]:active {
+      transform: translateY(0);
+    }
+
+    .message-container {
+      margin-top: 25px;
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #message {
+      width: 100%;
+      padding: 15px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-align: center;
+      display: none;
+      background-color: #d4edda;
+      color: #155724;
+      border: 2px solid #c3e6cb;
+      animation: fadeIn 0.3s ease;
     }
 
     #error {
-      display: block;
-      background-color: #ffebee;
-      color: #c62828;
+      width: 100%;
+      padding: 15px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-align: center;
+      display: none;
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 2px solid #f5c6cb;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 25px;
+        margin: 15px auto;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      nav {
+        flex-direction: column;
+      }
+
+      nav a {
+        width: 100%;
+      }
+
+      label {
+        font-size: 13px;
+      }
+
+      input,
+      select {
+        font-size: 16px;
+      }
+
+      button[type="submit"] {
+        padding: 12px;
+        font-size: 15px;
+      }
     }
   </style>
 
   <body>
     <div class="container">
-      <h1>Add a Products</h1>
+      <h1>🛍️ Add a Product</h1>
+      <p class="subtitle">Fill in the details to add a new product</p>
+      
       <nav>
-        <a href="./index.html">Home</a>
-        <a href="">All Product</a>
+        <a href="./product.html">Home</a>
+        <a href="./Productdisplay.html">All Products</a>
       </nav>
-      <form action="" onsubmit="createProduct()">
-        <label for="">Product Name</label>
-        <input type="text" id="productName" />
-        <label for="">Product Price</label>
-        <input type="number" id="productPrice" />
 
-        <label for="">Currency Code</label>
-        <input type="text" id="CurrencyCode" />
+      <form action="" onsubmit="createProduct(event); return false">
+        <div class="form-group">
+          <label for="productImage">📸 Upload Product Image</label>
+          <input type="file" id="productImage" name="Image" accept="image/*" required />
+        </div>
 
-        <label for="">Number of Sale</label>
-        <input type="number" id="numberOfSale" />
+        <div class="form-group">
+          <label for="productName">📝 Product Name</label>
+          <input type="text" id="productName" placeholder="Enter product name" required />
+        </div>
 
-        <label for="">Product Rating</label>
-        <input type="number" id="productRaitng" />
+        <div class="form-group">
+          <label for="productPrice">💰 Product Price</label>
+          <input type="number" id="productPrice" placeholder="0.00" step="0.01" required />
+        </div>
 
-        <label for="">For Dropshipping</label>
-        <select name="" id="Dropshipping">
-          <option value="true">Yes</option>
-          <option value="false">No</option>
-        </select>
+        <div class="form-group">
+          <label for="CurrencyCode">💵 Currency Code</label>
+          <input type="text" id="CurrencyCode" placeholder="USD, PKR, EUR" required />
+        </div>
 
-        <label for="">Shop Name</label>
-        <input type="text" id="shopName" />
+        <div class="form-group">
+          <label for="numberOfSale">📊 Number of Sales</label>
+          <input type="number" id="numberOfSale" placeholder="0" min="0" required />
+        </div>
 
-        <button type="submit">Sudmit</button>
+        <div class="form-group">
+          <label for="productRaitng">⭐ Product Rating</label>
+          <input type="number" id="productRaitng" placeholder="5.0" min="0" max="5" step="0.1" required />
+        </div>
+
+        <div class="form-group">
+          <label for="Dropshipping">🚚 Free Shipping (Dropshipping)?</label>
+          <select id="Dropshipping" required>
+            <option value="true">Yes - Free Shipping</option>
+            <option value="false">No - Paid Shipping</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="shopName">🏪 Shop Name</label>
+          <input type="text" id="shopName" placeholder="Enter shop name" required />
+        </div>
+
+        <button type="submit">✅ Submit Product</button>
       </form>
-      <h3 id="message"></h3>
-      <h3 id="error"></h3>
+
+      <div class="message-container">
+        <h3 id="message"></h3>
+        <h3 id="error"></h3>
+      </div>
     </div>
   </body>
 
   <script>
-    function createProduct() {
+    function createProduct(event) {
       event.preventDefault();
       const form = event.target;
-      let productName = document.querySelector("#productName").value;
-      let productprice = document.querySelector("#productPrice").value;
-      let CurrencyCode = document.querySelector("#CurrencyCode").value;
-      let numberOfSale = document.querySelector("#numberOfSale").value;
-      let productRaitng = document.querySelector("#productRaitng").value;
-      let Dropshipping =
-        document.querySelector("#Dropshipping").value === "true";
-      let shopName = document.querySelector("#shopName").value;
+      const formData = new FormData();
+      
+      formData.append("Image", document.querySelector("#productImage").files[0]);
+      formData.append("productName", document.querySelector("#productName").value);
+      formData.append("productprice", document.querySelector("#productPrice").value);
+      formData.append("CurrencyCode", document.querySelector("#CurrencyCode").value);
+      formData.append("numberOfSale", document.querySelector("#numberOfSale").value);
+      formData.append("productRaitng", document.querySelector("#productRaitng").value);
+      formData.append("Dropshipping", document.querySelector("#Dropshipping").value);
+      formData.append("shopName", document.querySelector("#shopName").value);
+
+      // Hide previous messages
+      document.querySelector("#message").style.display = "none";
+      document.querySelector("#error").style.display = "none";
 
       axios
-        .post("http://localhost:5400/api/products/save", {
-          productName,
-          productprice,
-          CurrencyCode,
-          numberOfSale,
-          productRaitng,
-          Dropshipping,
-          shopName,
+        .post("http://localhost:5400/api/products/save", formData, {
+           headers: { "Content-Type": "multipart/form-data" }  
         })
         .then(function (response) {
           console.log(response.data);
-          document.querySelector("#message").innerHTML = response.data.message;
-           form.reset();
+          const msgElement = document.querySelector("#message");
+          msgElement.innerHTML = "✅ " + response.data.message;
+          msgElement.style.display = "block";
+          form.reset();
+          
+          // Hide message after 4 seconds
+          setTimeout(() => {
+            msgElement.style.display = "none";
+          }, 4000);
         })
         .catch(function (error) {
           console.log(error.response.data);
-          document.querySelector("#error").innerHTML =
-            error.response.data.message;
+          const errElement = document.querySelector("#error");
+          errElement.innerHTML = "❌ " + error.response.data.message;
+          errElement.style.display = "block";
         });
     }
   </script>
